@@ -1,0 +1,15 @@
+
+.buttons{
+    display: flex;
+    justify-content: center;
+}
+button{
+    font-size: xx-large;
+    text-transform: uppercase;
+    padding: 0 25px;
+    margin: 10px 10px;
+    background-color: ghostwhite;
+    color: #181818;
+    border-radius: 10px;
+    border-color:#181818;
+}
