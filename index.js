@@ -1,39 +1,46 @@
-// main container
+// main ()
+var box1Size = 500;
+var box2Size = 100;
 var box1 = document.createElement("div");
-// box1.style.marginLeft = 25 + '%';
-box1.style.height = 500 + "px";
-box1.style.width = 500 + "px";
+box1.style.height = box1Size + "px";
+box1.style.width = box1Size + "px";
 box1.style.border = "2px solid black";
 box1.style.backgroundColor = "#181818";
 box1.style.position = "relative"
 document.body.appendChild(box1);
 // inner box
 var box2 = document.createElement("div");
-box2.style.height = 200 + "px";
-box2.style.width = 200 + "px";
+box2.style.height = box2Size + "px";
+box2.style.width = box2Size + "px";
 box2.style.backgroundColor = "white";
 box2.style.position = "absolute";
 box1.appendChild(box2);
 
-var details = document.getElementById('details');
+
 var id = 0;
-// play() 
+var hor = 0, vertical = 0;
+var limit = box1Size - box2Size, itration = 0;
+var i1 = 0, i2, i3, i4;
+
+// play 
+var click = 0;
 function play() {
-    id = setInterval(move, 1);
+    click++;
+    if (click > 1) {
+        console.log('cant increase speed');
+    }
+    else {
+
+        id = setInterval(move, 1);
+    }
 }
-// pause()
+// pause
 function pause() {
     clearInterval(id);
 }
 
-var hor = 0, vertical = 0;
-var limit = 450, itration = 0;
-var i1 = 0, i2, i3, i4;
-function move() {
-
-    details.innerHTML = "Top:" + box2.style.marginTop + " |Left:" + box2.style.marginLeft + " |itration no:" + itration;
+function move(){
     if (i1 < limit) {
-
         i1++;
         box2.style.marginLeft = i1 + 'px';
         if (i1 == limit) {
@@ -61,9 +68,9 @@ function move() {
             console.log(limit, vertical, hor);
             console.log('i1:', i1, i2, i3, i4);
             i4 = limit;
-            limit = limit - 50;
-            vertical = vertical + 50;
-            hor = hor + 50;
+            limit = limit - box2Size;
+            vertical = vertical + box2Size;
+            hor = hor + box2Size;
             i3 = 0;
 
 
@@ -80,12 +87,10 @@ function move() {
         }
     }
     else if (limit <= vertical || limit <= hor) {
-        box2.style.marginLeft="250px";
-        box2.style.marginTop="250px";
         clearInterval(box2.offsetTop);
 
     }
     else {
-        i1 = hor - 50;
+        i1 = hor - box2Size;
     }
 }
